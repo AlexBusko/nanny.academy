@@ -1,0 +1,39 @@
+@import "../../../sass/mediaQueries";
+@import "../../../sass/variables";
+
+.heading {
+    width: 100%;
+    position: absolute;
+    padding-top: 6rem;
+    background-image: url("../../../assets/images/coinmans/bitcoin.png");
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-attachment: absolute;
+    background-position: 60% 50%;
+    height: 100vh;
+    h1 {
+        color: black;
+        font-weight: 900;
+    }
+}
+
+
+.heading-back {
+  position: relative;
+  height: 100vh;
+  background: $honey-orange;
+  padding-top: 60px;
+  clip-path: polygon(
+    61% 0,
+    76% 0,
+    70% 35%,
+    51% 57%,
+    27% 69%,
+    12% 79%,
+    0 86%,
+    0% 70%,
+    0% 35%,
+    0 0
+  );
+  z-index: -1;
+}

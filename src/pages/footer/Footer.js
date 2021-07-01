@@ -6,8 +6,9 @@ import {
   faInstagram,
   faTelegram,
 } from "@fortawesome/free-brands-svg-icons";
-import "./style.scss";
 import PrimaryButton from "../../components/button/PrimaryButton";
+import { Link } from "react-router-dom";
+import "./style.scss";
 
 const Footer = () => {
   return (
@@ -15,9 +16,9 @@ const Footer = () => {
       <Container className="footer-container">
         <Row className="main-content-container">
           <Col className={"navigation"}>
-            <a href="#courses">КУРСИ</a>
-            <a href="#courses">ПОДІЇ</a>
-            <a href="#courses">ПРО НАС</a>
+            <Link to="/courses">КУРСИ</Link>
+            <Link to="/events">ПОДІЇ</Link>
+            <Link to="/aboutus">ПРО НАС</Link>
           </Col>
           <Col className={"contacts"}>
             <h3>Контакти:</h3>
