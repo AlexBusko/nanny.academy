@@ -10,7 +10,6 @@ export const Heading = () => {
           <h1>Школа криптовалютної грамотності</h1>
         </Container>
       </div>
-
       <div className="heading-back"></div>
     </>
   );

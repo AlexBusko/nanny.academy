@@ -6,23 +6,20 @@
   background-size: 20rem;
   background-repeat: no-repeat;
   background-position: right bottom;
-
-    width: 100%;
-    position: absolute;
-    padding-top: 6rem;
-    height: 100vh;
-    h1 {
-        color: black;
-        font-weight: 900;
-    }
+  width: 100%;
+  position: absolute;
+  padding-top: 6rem;
+  height: 100vh;
+  h1 {
+    color: black;
+    font-weight: 900;
+  }
 }
-
 
 .heading-back {
   position: relative;
   height: 100vh;
   background: $honey-orange;
-
 
   padding-top: 60px;
   clip-path: polygon(
@@ -40,7 +37,7 @@
   z-index: -1;
 }
 
-@include responsive (md) {
+@include responsive(md) {
   .heading {
     background-size: 40rem;
   }
