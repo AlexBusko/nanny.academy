@@ -5,6 +5,7 @@ import Courses from "./pages/courses/Courses";
 import Footer from "./pages/footer/Footer";
 import Events from "./pages/events/Events";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import FirstEvent from "./pages/events/FirstEvent/FirstEvent";
 
 const App = () => {
   return (
@@ -13,8 +14,9 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/" children={<Landing />} />
-          <Route path="/courses" children={<Courses />} />
-          <Route path="/events" children={<Events />} />
+          <Route exact path="/courses" children={<Courses />} />
+          <Route exact path="/events" children={<Events />} />
+          <Route exact path="/events/firstEvent" children={<FirstEvent />} />
         </Switch>
         <Footer />
       </Router>
