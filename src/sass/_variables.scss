@@ -2,14 +2,19 @@ $honey-yellow: #ffb703;
 $orange: #fb8500;
 $prussian-blue: #023047;
 
-$white-gray-background: linear-gradient(
+$white-gray: linear-gradient(
   90deg,
   rgba(250, 250, 250, 1) 60%,
   rgba(223, 223, 223, 0.6) 100%
 );
+
+$gray-white: linear-gradient(
+  90deg,
+  rgba(223, 223, 223, 1) 60%,
+  rgba(250, 250, 250, 0.6) 100%
+);
 $honey-orange: linear-gradient(120deg, $honey-yellow 30%, $orange 100%);
 $orange-honey: linear-gradient(80deg, #fb8500 50%, #ffb703 100%);
 
-
 // nft-event-green
-$green-blue: linear-gradient(245deg, #5cb2a0 50%, #04A777 100%);
+$green-blue: linear-gradient(245deg, #5cb2a0 50%, #04a777 100%);
