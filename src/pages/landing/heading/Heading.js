@@ -4,13 +4,13 @@ import "./style.scss";
 
 export const Heading = () => {
   return (
-    <>
+    <div className="heading-wrapper">
       <div className="heading">
         <Container>
           <h1>Школа криптовалютної грамотності</h1>
         </Container>
       </div>
       <div className="heading-back"></div>
-    </>
+    </div>
   );
 };
