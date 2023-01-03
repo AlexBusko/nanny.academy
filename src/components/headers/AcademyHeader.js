@@ -3,10 +3,10 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./style.scss";
 
-const Header = () => {
+const AcademyHeader = () => {
   return (
     <Navbar
-      className="header"
+      className="academy-header"
       bg="primary"
       variant="light"
       expand="lg"
@@ -14,23 +14,23 @@ const Header = () => {
     >
       <Container>
         <Link to="/" className="brand">
-          <Navbar.Brand >
-            Nanny.Academy
-          </Navbar.Brand>
+          <Navbar.Brand>Nanny.Academy</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link>
-              <Link to="/events" className="link">
-                Події
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/courses" className="link">
-                Курси
-              </Link>
-            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/events"
+              children="Події"
+              className="link"
+            />
+            <Nav.Link
+              as={Link}
+              to="/courses"
+              children="Курси"
+              className="link"
+            />
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -38,4 +38,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AcademyHeader;

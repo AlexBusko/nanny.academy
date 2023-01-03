@@ -1,31 +1,43 @@
 import "./App.scss";
-import Header from "./components/header/Header";
 import Landing from "./pages/landing/Landing";
 import Courses from "./pages/courses/Courses";
-import Footer from "./pages/footer/Footer";
 import Events from "./pages/events/Events";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Checker from "./pages/checker/Checker";
+import SuiChecker from "./pages/checker/sui/SuiCheker";
+import { Routes, Route, useLocation } from "react-router-dom";
 import FirstEvent from "./pages/events/FirstEvent/FirstEvent";
 import { TradingCourse } from "./pages/courses/tradingCourse/TradingCourse";
+import AcademyTemplate from "./components/templates/AcademyTemplate";
+import CheckerTemplate from "./components/templates/CheckerTemplate";
 
 const App = () => {
+  const location = useLocation();
+  console.log("hash", location.hash);
+  console.log("pathname", location.pathname);
+  console.log("search", location.search);
+
   return (
     <div>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/" children={<Landing />} />
-          <Route exact path="/courses" children={<Courses />} />
-          <Route exact path="/events" children={<Events />} />
+      <Routes>
+        <Route element={<AcademyTemplate />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/events" element={<Events />} />
+        </Route>
+        <Route element={<CheckerTemplate />}>
+          <Route path="/checker" element={<Checker />}></Route>
+          <Route path="/checker/sui" element={<SuiChecker />}></Route>
+        </Route>
+        {/*  */}
+        {/* 
+          
           <Route exact path="/events/firstEvent" children={<FirstEvent />} />
           <Route
             exact
             path="/courses/tradingCourse"
             children={<TradingCourse />}
-          />
-        </Switch>
-        <Footer />
-      </Router>
+          /> */}
+      </Routes>
     </div>
   );
 };

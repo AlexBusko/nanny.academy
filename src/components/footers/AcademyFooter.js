@@ -6,11 +6,11 @@ import {
   faInstagram,
   faTelegram,
 } from "@fortawesome/free-brands-svg-icons";
-import PrimaryButton from "../../components/button/PrimaryButton";
+import PrimaryButton from "../button/PrimaryButton";
 import { Link } from "react-router-dom";
 import "./style.scss";
 
-const Footer = () => {
+const AcademyFooter = () => {
   return (
     <div className="footer">
       <Container className="footer-container">
@@ -53,12 +53,16 @@ const Footer = () => {
           </Col>
         </Row>
         <Row className={"footer-info"}>
-          <Col><span>© 2021, All right reserved. Nanny Ventures</span></Col>
-          <Col className="creator"><a href="http://convalia.digital" >convalia.digital</a></Col>
+          <Col>
+            <span>© 2021, All right reserved. Nanny Ventures</span>
+          </Col>
+          <Col className="creator">
+            <a href="http://convalia.digital">convalia.digital</a>
+          </Col>
         </Row>
       </Container>
     </div>
   );
 };
 
-export default Footer;
+export default AcademyFooter;

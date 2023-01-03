@@ -1,14 +1,16 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+// import { Link, useMatch } from "react-router-dom";
 import "./style.scss";
 
 const EventCard = ({ id, hidden, title, location, date, time }) => {
-  let { url } = useRouteMatch();
+  // let { url } = useMatch();
   return (
     <div
-      className={hidden ? "event-card-wrapper hidden" : "event-card-wrapper hover"}
+      className={
+        hidden ? "event-card-wrapper hidden" : "event-card-wrapper hover"
+      }
     >
-      <Link to={hidden ? undefined : `${url}/${id}`} className={"link"}>
+      {/* <Link to={hidden ? undefined : `${url}/${id}`} className={"link"}>
         <div className="event-card">
           <h2 className="title">{title}</h2>
           <div className="info">
@@ -18,7 +20,7 @@ const EventCard = ({ id, hidden, title, location, date, time }) => {
           </div>
         </div>
         <div className="event-card-back"></div>
-      </Link>
+      </Link> */}
     </div>
   );
 };
