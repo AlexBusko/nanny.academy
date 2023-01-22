@@ -1,21 +1,17 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 
+import SuiChecker from "./sui/SuiCheker";
 import "./style.scss";
 
 const Checker = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="checker-wrapper">
+    <div className="checker-wrapper" id={theme}>
       <div className="checker">
-        <Container>
-          <Row md={3} className="grid-row">
-            <Col className="grid-col"></Col>
-            <Col>This is Checker</Col>
-            <Col></Col>
-          </Row>
-        </Container>
+        <SuiChecker />
       </div>
-      <div className="courses-back"></div>
     </div>
   );
 };
