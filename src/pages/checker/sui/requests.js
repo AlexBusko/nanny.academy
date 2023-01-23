@@ -6,6 +6,7 @@ export function sendHttpRequestToSuiNode(url, dataMethod) {
     url: url,
     headers: {
       "Content-Type": "application/json",
+      "Content-Security-Policy": "upgrade-insecure-requests;",
     },
     data: {
       jsonrpc: "2.0",
