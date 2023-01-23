@@ -36,7 +36,7 @@ const SuiChecker = () => {
         "sui_getTotalTransactionNumber"
       ).then((res) => getTransactions(res.result));
 
-      sendHttpRequestToSuiNode(`http://${ip}:${rpcPort}`, "rpc.discover").then(
+      sendHttpRequestToSuiNode(`https://${ip}:${rpcPort}`, "rpc.discover").then(
         (res) => getVersion(res.result.info.version)
       );
     }
