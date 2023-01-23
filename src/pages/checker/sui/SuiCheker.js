@@ -32,7 +32,7 @@ const SuiChecker = () => {
   useEffect(() => {
     if (submitted) {
       sendHttpRequestToSuiNode(
-        `http://${ip}:${rpcPort}`,
+        `https://${ip}:${rpcPort}`,
         "sui_getTotalTransactionNumber"
       ).then((res) => getTransactions(res.result));
 
