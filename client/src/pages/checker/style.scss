@@ -1,0 +1,22 @@
+@import "../../sass/variables";
+
+#dark {
+  background: #0a0a23;
+  color: white;
+}
+
+#light {
+  background: #f5f5f5;
+  color: #000000;
+}
+
+.checker-wrapper {
+  min-height: 100vh;
+  .checker {
+    padding-top: 150px;
+
+    .cards-container {
+      margin-top: 50px;
+    }
+  }
+}
