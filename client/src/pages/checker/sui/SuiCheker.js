@@ -11,6 +11,7 @@ import {
 import MainData from "./cards/mainData/MainData";
 import { sendHttpRequestToSuiNode } from "./requests";
 import SyncData from "./cards/syncData/SyncData";
+import "./style.scss";
 
 const SuiChecker = () => {
   const [ip, setIp] = useState("185.252.232.33");
@@ -71,12 +72,13 @@ const SuiChecker = () => {
     <div className="">
       <div className="">
         <Container>
-          <Form onSubmit={handleSubmit}>
+          <Form className="checker-form" onSubmit={handleSubmit}>
             <Row>
               <Col xs={12} md={3}>
                 <Form.Group controlId="formIP">
                   <Form.Label>IP</Form.Label>
                   <FormControl
+                    className="input"
                     type="text"
                     value={ip}
                     onChange={(e) => setIp(e.target.value)}
@@ -87,6 +89,7 @@ const SuiChecker = () => {
                 <Form.Group controlId="formRPC">
                   <Form.Label>RPC</Form.Label>
                   <FormControl
+                    className="input"
                     type="text"
                     value={rpcPort}
                     onChange={(e) => setRpcPort(e.target.value)}
@@ -97,6 +100,7 @@ const SuiChecker = () => {
                 <Form.Group controlId="formMetrics">
                   <Form.Label>Metrics</Form.Label>
                   <FormControl
+                    className="input"
                     type="text"
                     value={metricsPort}
                     onChange={(e) => setMetricsPort(e.target.value)}
@@ -139,7 +143,7 @@ const SuiChecker = () => {
           </Row>
         </Container>
       </div>
-      <div className=""></div>
+      <div className="hello">hello</div>
     </div>
   );
 };

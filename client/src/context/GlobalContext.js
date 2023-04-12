@@ -1,5 +1,4 @@
-import React, { createContext, useReducer, useEffect, useContext } from "react";
-import axios from "axios";
+import React, { createContext, useReducer, useContext } from "react";
 
 const initialState = {
   user: null,
