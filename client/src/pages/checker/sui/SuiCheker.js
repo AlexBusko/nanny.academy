@@ -44,7 +44,7 @@ const SuiChecker = () => {
       getVersion("Loading...");
       sendHttpRequestToSuiNode(
         `http://${ip}:${rpcPort}`,
-        "sui_getTotalTransactionNumber"
+        "sui_getTotalTransactionBlocks"
       ).then((res) => getTransactions(res.result));
 
       sendHttpRequestToSuiNode(`http://${ip}:${rpcPort}`, "rpc.discover").then(
@@ -58,7 +58,7 @@ const SuiChecker = () => {
     getHeadVersion("Loading...");
     sendHttpRequestToSuiNode(
       `https://fullnode.${suiNetwork}.sui.io:443`,
-      "sui_getTotalTransactionNumber"
+      "sui_getTotalTransactionBlocks"
     ).then((res) => getHeadTransactions(res.result));
     sendHttpRequestToSuiNode(
       `https://fullnode.${suiNetwork}.sui.io:443`,
