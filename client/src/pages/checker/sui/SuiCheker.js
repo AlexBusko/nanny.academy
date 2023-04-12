@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Container,
   Row,
@@ -12,7 +13,7 @@ import { sendHttpRequestToSuiNode } from "./requests";
 import SyncData from "./cards/syncData/SyncData";
 
 const SuiChecker = () => {
-  const [ip, setIp] = useState("161.97.133.53");
+  const [ip, setIp] = useState("185.252.232.33");
   const [rpcPort, setRpcPort] = useState("9000");
   const [metricsPort, setMetricsPort] = useState("");
   const [suiNetwork, setSuiNetwork] = useState("testnet");
@@ -36,20 +37,20 @@ const SuiChecker = () => {
     }
   };
 
-  // requests
-
   useEffect(() => {
     if (submitted) {
       getTransactions("Loading...");
       getVersion("Loading...");
-      sendHttpRequestToSuiNode(
-        `http://${ip}:${rpcPort}`,
-        "sui_getTotalTransactionBlocks"
-      ).then((res) => getTransactions(res.result));
 
-      sendHttpRequestToSuiNode(`http://${ip}:${rpcPort}`, "rpc.discover").then(
-        (res) => getVersion(res.result.info.version)
-      );
+      axios
+        .post("http://localhost:3001/api/data", { ip, rpcPort })
+        .then((res) => {
+          getTransactions(res.data.transactions);
+          getVersion(res.data.version);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     }
   }, [submitted, ip, rpcPort]);
 
