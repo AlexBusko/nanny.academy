@@ -1,0 +1,22 @@
+@import "../../../sass/variables";
+
+.checker-form {
+  .input {
+    background-color: $checker-dark-grey;
+    color: white;
+    border: 2px solid $checker-blue;
+    border-radius: 10px;
+    height: 52px;
+
+    &:focus {
+      box-shadow: none;
+      border: 2px solid transparent;
+      border-image-slice: 1;
+      border-radius: 10px;
+      background-image: linear-gradient(#191932, #191932),
+        linear-gradient(to right, #e323ff, #7517f8);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+  }
+}
