@@ -1,16 +1,20 @@
+// External package imports
 import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+
+// Context imports
+import { SuiCheckerContext } from "../../../context/SuiCheckerContext";
+
+// Local component imports
 import MainData from "./cards/mainData/MainData";
-import { sendHttpRequestToSuiNode } from "./requests";
 import SyncData from "./cards/syncData/SyncData";
+import SuiForm from "./form/SuiForm";
+
+// Utility or helper function imports
+import { sendHttpRequestToSuiNode } from "./requests";
+
+// Stylesheet imports
 import "./style.scss";
 
 const SuiChecker = () => {
@@ -69,82 +73,49 @@ const SuiChecker = () => {
   }, [suiNetwork]);
 
   return (
-    <div className="">
+    <SuiCheckerContext.Provider
+      value={{
+        ip,
+        rpcPort,
+        metricsPort,
+        suiNetwork,
+        setIp,
+        setRpcPort,
+        setMetricsPort,
+        setSuiNetwork,
+      }}
+    >
       <div className="">
-        <Container>
-          <Form className="checker-form" onSubmit={handleSubmit}>
+        <div className="">
+          <Container className="form-container">
+            <SuiForm
+              handleSubmit={handleSubmit}
+              handleNetworkChange={handleNetworkChange}
+            />
+          </Container>
+          <Container className="cards-container">
             <Row>
-              <Col xs={12} md={3}>
-                <Form.Group controlId="formIP">
-                  <Form.Label>IP</Form.Label>
-                  <FormControl
-                    className="input"
-                    type="text"
-                    value={ip}
-                    onChange={(e) => setIp(e.target.value)}
-                  />
-                </Form.Group>
+              <Col xs={12} md={4}>
+                <MainData
+                  version={version}
+                  headVersion={headVersion}
+                  transactions={transactions}
+                  headTransactions={headTransactions}
+                />
               </Col>
-              <Col xs={12} md={3}>
-                <Form.Group controlId="formRPC">
-                  <Form.Label>RPC</Form.Label>
-                  <FormControl
-                    className="input"
-                    type="text"
-                    value={rpcPort}
-                    onChange={(e) => setRpcPort(e.target.value)}
-                  />
-                </Form.Group>
+              <Col xs={12} md={4}>
+                <SyncData
+                  submitted={submitted}
+                  transactions={transactions}
+                  headTransactions={headTransactions}
+                ></SyncData>
               </Col>
-              <Col xs={12} md={3}>
-                <Form.Group controlId="formMetrics">
-                  <Form.Label>Metrics</Form.Label>
-                  <FormControl
-                    className="input"
-                    type="text"
-                    value={metricsPort}
-                    onChange={(e) => setMetricsPort(e.target.value)}
-                  />
-                </Form.Group>
-              </Col>
-              <Col xs={12} md={3}>
-                <Button
-                  variant="primary"
-                  type="button"
-                  onClick={() => handleNetworkChange("devnet")}
-                >
-                  {suiNetwork === "testnet" ? "devnet" : "testnet"}
-                </Button>
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Col>
+              <Col xs={12} md={4}></Col>
             </Row>
-          </Form>
-        </Container>
-        <Container className="cards-container">
-          <Row>
-            <Col xs={12} md={4}>
-              <MainData
-                version={version}
-                headVersion={headVersion}
-                transactions={transactions}
-                headTransactions={headTransactions}
-              />
-            </Col>
-            <Col xs={12} md={4}>
-              <SyncData
-                submitted={submitted}
-                transactions={transactions}
-                headTransactions={headTransactions}
-              ></SyncData>
-            </Col>
-            <Col xs={12} md={4}></Col>
-          </Row>
-        </Container>
+          </Container>
+        </div>
       </div>
-      <div className="hello">hello</div>
-    </div>
+    </SuiCheckerContext.Provider>
   );
 };
 
