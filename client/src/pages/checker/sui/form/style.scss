@@ -1,0 +1,44 @@
+@import "../../../../sass/variables";
+
+.checker-form {
+  .flex-end {
+    align-items: flex-end;
+  }
+  .input {
+    background-color: $checker-dark-grey;
+    color: white;
+    border: 2px solid $checker-blue;
+    border-radius: 10px;
+    height: 52px;
+    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+      border: 2px solid transparent;
+      border-image-slice: 1;
+      border-radius: 10px;
+      background-image: linear-gradient(#191932, #191932),
+        linear-gradient(to right, #e323ff, #7517f8);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+  }
+
+  .network-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .label {
+    font-size: 12px;
+    font-weight: 400px;
+  }
+
+  .ports {
+    max-width: 183px;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: flex-end;
+  }
+}
