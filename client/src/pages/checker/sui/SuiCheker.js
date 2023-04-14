@@ -12,7 +12,6 @@ import SyncData from "./cards/syncData/SyncData";
 import SuiForm from "./form/SuiForm";
 
 // Utility or helper function imports
-import { sendHttpRequestToSuiNode } from "./requests";
 
 // Stylesheet imports
 import "./style.scss";
@@ -20,7 +19,7 @@ import "./style.scss";
 const SuiChecker = () => {
   const [ip, setIp] = useState("185.252.232.33");
   const [rpcPort, setRpcPort] = useState("9000");
-  const [metricsPort, setMetricsPort] = useState("");
+  // const [metricsPort, setMetricsPort] = useState("");
   const [suiNetwork, setSuiNetwork] = useState("testnet");
 
   const [submitted, setSubmitted] = useState(false);
@@ -48,7 +47,7 @@ const SuiChecker = () => {
       getVersion("Loading...");
 
       axios
-        .post("http://localhost:3001/api/data", { ip, rpcPort })
+        .post("http://localhost:3001/api/node/data", { ip, rpcPort })
         .then((res) => {
           getTransactions(res.data.transactions);
           getVersion(res.data.version);
@@ -62,14 +61,16 @@ const SuiChecker = () => {
   useEffect(() => {
     getHeadTransactions("Loading...");
     getHeadVersion("Loading...");
-    sendHttpRequestToSuiNode(
-      `https://fullnode.${suiNetwork}.sui.io:443`,
-      "sui_getTotalTransactionBlocks"
-    ).then((res) => getHeadTransactions(res.result));
-    sendHttpRequestToSuiNode(
-      `https://fullnode.${suiNetwork}.sui.io:443`,
-      "rpc.discover"
-    ).then((res) => getHeadVersion(res.result.info.version));
+
+    axios
+      .post("http://localhost:3001/api/sui/data", { suiNetwork })
+      .then((res) => {
+        getHeadTransactions(res.data.transactions);
+        getHeadVersion(res.data.version);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, [suiNetwork]);
 
   return (
@@ -77,12 +78,12 @@ const SuiChecker = () => {
       value={{
         ip,
         rpcPort,
-        metricsPort,
         suiNetwork,
+        setSuiNetwork,
         setIp,
         setRpcPort,
-        setMetricsPort,
-        setSuiNetwork,
+        // setMetricsPort,
+        // metricsPort,
       }}
     >
       <div className="">
