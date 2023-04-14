@@ -1,17 +1,22 @@
+// External package imports
 import React, { useContext } from "react";
 import { Row, Col, Form, FormControl, Button } from "react-bootstrap";
+
+// Context imports
 import { SuiCheckerContext } from "../../../../context/SuiCheckerContext";
+
+// Stylesheet imports
 import "./style.scss";
 
 const SuiForm = ({ handleSubmit, handleNetworkChange }) => {
   const {
     ip,
     rpcPort,
-    metricsPort,
     suiNetwork,
     setIp,
     setRpcPort,
-    setMetricsPort,
+    // metricsPort,
+    // setMetricsPort,
   } = useContext(SuiCheckerContext);
 
   return (
