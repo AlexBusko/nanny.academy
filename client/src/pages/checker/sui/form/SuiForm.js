@@ -1,78 +1,89 @@
-// External package imports
 import React, { useContext } from "react";
-import { Row, Col, Form, FormControl, Button } from "react-bootstrap";
-
-// Context imports
+import {
+  Row,
+  Col,
+  Form,
+  FormControl,
+  Button,
+  Container,
+} from "react-bootstrap";
+import { ThemeContext } from "../../../../context/ThemeContext";
 import { SuiCheckerContext } from "../../../../context/SuiCheckerContext";
-
-// Stylesheet imports
 import "./style.scss";
 
 const SuiForm = ({ handleSubmit, handleNetworkChange }) => {
-  const {
-    ip,
-    rpcPort,
-    suiNetwork,
-    setIp,
-    setRpcPort,
-    // metricsPort,
-    // setMetricsPort,
-  } = useContext(SuiCheckerContext);
+  const { theme } = useContext(ThemeContext);
+  const { ip, rpcPort, suiNetwork, setIp, setRpcPort } =
+    useContext(SuiCheckerContext);
 
   return (
-    <Form className="checker-form" onSubmit={handleSubmit}>
-      <Row className="flex-end">
-        <Col xs={12} md={3}>
-          <Form.Group controlId="formIP">
-            <Form.Label className="label">IP</Form.Label>
-            <FormControl
-              className="input"
-              type="text"
-              value={ip}
-              onChange={(e) => setIp(e.target.value)}
-            />
-          </Form.Group>
-        </Col>
-        <Col xs={12} md={3} className="ports">
-          <Form.Group controlId="formRPC">
-            <Form.Label className="label">RPC</Form.Label>
-            <FormControl
-              className="input port"
-              type="text"
-              value={rpcPort}
-              onChange={(e) => setRpcPort(e.target.value)}
-            />
-          </Form.Group>
-          {/* <Form.Group controlId="formMetrics">
-            <Form.Label className="label">Metrics</Form.Label>
-            <FormControl
-              className="input port"
-              type="text"
-              value={metricsPort}
-              onChange={(e) => setMetricsPort(e.target.value)}
-            />
-          </Form.Group> */}
-        </Col>
-        <Col xs={12} md={3}>
-          <Form.Group className="network-group">
-            <Form.Label className="label">Network</Form.Label>
+    <Container className="sui-form-container">
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col sm={12} md={4} className="sui-form-col">
+            <Form.Group controlId="formIP">
+              <Form.Label>IP</Form.Label>
+              <FormControl
+                id={theme === "light" && "light"}
+                className="input"
+                type="text"
+                value={ip}
+                onChange={(e) => setIp(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+
+          <Col xs={6} md={2} className="sui-form-col">
+            <Form.Group controlId="formRPC">
+              <Form.Label>RPC</Form.Label>
+              <FormControl
+                id={theme === "light" && "light"}
+                className="input"
+                type="text"
+                value={rpcPort}
+                onChange={(e) => setRpcPort(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+          <Col xs={6} md={2} className="sui-form-col">
+            <Form.Group controlId="formMetrics">
+              <Form.Label>Metrics</Form.Label>
+              <FormControl
+                id={theme === "light" && "light"}
+                className="gray input"
+                type="text"
+                value={"Soon..."}
+                disabled
+              />
+            </Form.Group>
+          </Col>
+          <Col xs={6} md={2} className="sui-form-col">
+            <Form.Group className="network-form-container">
+              <Form.Label>Network</Form.Label>
+              <Button
+                id={theme === "light" && "light"}
+                className="btn"
+                variant="secondary"
+                type="button"
+                onClick={() => handleNetworkChange("devnet")}
+              >
+                {suiNetwork === "testnet" ? "TESTNET" : "DEVNET"}
+              </Button>
+            </Form.Group>
+          </Col>
+          <Col xs={6} md={2} className="sui-form-col">
             <Button
-              className="cheker-button"
+              id={theme === "light" && "light"}
+              className="btn sui-form-sbmt-button"
               variant="secondary"
-              type="button"
-              onClick={() => handleNetworkChange("devnet")}
+              type="submit"
             >
-              {suiNetwork === "testnet" ? "testnet" : "devnet"}
+              CHECK
             </Button>
-          </Form.Group>
-        </Col>
-        <Col xs={12} md={3}>
-          <Button className="cheker-button" variant="secondary" type="submit">
-            Submit
-          </Button>
-        </Col>
-      </Row>
-    </Form>
+          </Col>
+        </Row>
+      </Form>
+    </Container>
   );
 };
 

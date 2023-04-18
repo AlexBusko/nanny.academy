@@ -1,9 +1,10 @@
 @import "../../../../sass/variables";
 
-.checker-form {
-  .flex-end {
-    align-items: flex-end;
+.sui-form-container {
+  .sui-form-col {
+    margin-bottom: 15px;
   }
+
   .input {
     background-color: $checker-dark-grey;
     color: white;
@@ -24,21 +25,33 @@
     }
   }
 
-  .network-group {
+  #light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .gray {
+    color: #808080;
+  }
+
+  .network-form-container {
     display: flex;
     flex-direction: column;
   }
-  .label {
-    font-size: 12px;
-    font-weight: 400px;
+
+  .sui-form-sbmt-button {
+    margin-top: 32px;
   }
 
-  .ports {
-    max-width: 183px;
-  }
-
-  .button-container {
-    display: flex;
-    align-items: flex-end;
+  .btn {
+    border-radius: 10px;
+    font-weight: 700;
+    width: 100%;
+    height: 52px;
+    &#light {
+      background-color: #023aff;
+      color: white;
+      border: 2px solid #023aff;
+    }
   }
 }
