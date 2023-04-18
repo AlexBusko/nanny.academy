@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+//import CheckerFooter from "../../components/footers/CheckerFooter/CheckerFooter";
 import { ThemeContext } from "../../context/ThemeContext";
 
 import SuiChecker from "./sui/SuiCheker";
@@ -11,6 +12,9 @@ const Checker = () => {
     <div className="checker-wrapper" id={theme}>
       <div className="checker">
         <SuiChecker />
+
+        {/*  */}
+        {/* <CheckerFooter /> */}
       </div>
     </div>
   );

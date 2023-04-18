@@ -19,6 +19,7 @@ const AcademyFooter = () => {
             <Link to="/courses">КУРСИ</Link>
             <Link to="/events">ПОДІЇ</Link>
             <Link to="/aboutus">ПРО НАС</Link>
+            <Link to="/checker">МОНІТОРИНГ</Link>
           </Col>
           <Col className={"contacts"}>
             <h3>Контакти:</h3>

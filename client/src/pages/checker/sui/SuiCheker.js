@@ -88,7 +88,7 @@ const SuiChecker = () => {
     >
       <div className="">
         <div className="">
-          <Container className="form-container">
+          <Container>
             <SuiForm
               handleSubmit={handleSubmit}
               handleNetworkChange={handleNetworkChange}
