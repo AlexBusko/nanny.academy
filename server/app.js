@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-const axios = require("axios");
+// const axios = require("axios");
+const dotenv = require("dotenv");
 const app = express();
-const port = process.env.PORT || 3001;
+dotenv.config();
+const port = process.env.PORT;
 
 const corsOptions = require("./config/corsConfig");
 const nodeDataRoute = require("./routes/sui/nodeData");
@@ -18,6 +20,10 @@ app.get("/", (req, res) => {
 app.use("/api/node/data", nodeDataRoute);
 app.use("/api/sui/data", suiDataRoute);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+if (port) {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
+
+module.exports = app;

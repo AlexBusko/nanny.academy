@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   const { suiNetwork } = req.body;
   const url =
     suiNetwork === "testnet"
-      ? "https://sui-rpc-pt2.testnet-pride.com:443"
+      ? "https://fullnode.testnet.sui.io:443"
       : "https://fullnode.devnet.sui.io:443";
 
   try {
