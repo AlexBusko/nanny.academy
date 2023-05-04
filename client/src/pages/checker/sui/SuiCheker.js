@@ -27,6 +27,7 @@ const SuiChecker = () => {
   const [headVersion, getHeadVersion] = useState();
   const [transactions, getTransactions] = useState();
   const [version, getVersion] = useState();
+  const url = process.env.REACT_APP_API_URL;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,9 +46,9 @@ const SuiChecker = () => {
     if (submitted) {
       getTransactions("Loading...");
       getVersion("Loading...");
-
+      console.log(url);
       axios
-        .post("http://localhost:3001/api/node/data", { ip, rpcPort })
+        .post(`${url}api/node/data`, { ip, rpcPort })
         .then((res) => {
           getTransactions(res.data.transactions);
           getVersion(res.data.version);
@@ -63,7 +64,7 @@ const SuiChecker = () => {
     getHeadVersion("Loading...");
 
     axios
-      .post("http://localhost:3001/api/sui/data", { suiNetwork })
+      .post(`${url}api/sui/data`, { suiNetwork })
       .then((res) => {
         getHeadTransactions(res.data.transactions);
         getHeadVersion(res.data.version);
