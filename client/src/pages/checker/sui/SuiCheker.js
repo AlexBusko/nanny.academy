@@ -17,7 +17,7 @@ import SuiForm from "./form/SuiForm";
 import "./style.scss";
 
 const SuiChecker = () => {
-  const [ip, setIp] = useState("185.252.232.33");
+  const [ip, setIp] = useState("");
   const [rpcPort, setRpcPort] = useState("9000");
   // const [metricsPort, setMetricsPort] = useState("");
   const [suiNetwork, setSuiNetwork] = useState("testnet");
@@ -27,7 +27,8 @@ const SuiChecker = () => {
   const [headVersion, getHeadVersion] = useState();
   const [transactions, getTransactions] = useState();
   const [version, getVersion] = useState();
-  const url = process.env.REACT_APP_API_URL;
+  const url =
+    process.env.REACT_APP_API_URL || "https://nanny-academy.onrender.com/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,7 +58,7 @@ const SuiChecker = () => {
           console.error("Error fetching data:", error);
         });
     }
-  }, [submitted, ip, rpcPort]);
+  }, [submitted, ip, rpcPort, url]);
 
   useEffect(() => {
     getHeadTransactions("Loading...");
@@ -72,7 +73,7 @@ const SuiChecker = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [suiNetwork]);
+  }, [suiNetwork, url]);
 
   return (
     <SuiCheckerContext.Provider
