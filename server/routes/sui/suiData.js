@@ -28,10 +28,21 @@ const fetchSuiData = async (url) => {
 
 router.post("/", async (req, res) => {
   const { suiNetwork } = req.body;
-  const url =
-    suiNetwork === "testnet"
-      ? "https://fullnode.testnet.sui.io:443"
-      : "https://fullnode.devnet.sui.io:443";
+  let url;
+
+  switch (suiNetwork) {
+    case "testnet":
+      url = "https://fullnode.testnet.sui.io:443";
+      break;
+    case "devnet":
+      url = "https://fullnode.devnet.sui.io:443";
+      break;
+    case "mainnet":
+      url = "https://fullnode.mainnet.sui.io:443";
+      break;
+    default:
+      return res.status(400).json({ error: "Invalid suiNetwork value" });
+  }
 
   try {
     const data = await fetchSuiData(url);

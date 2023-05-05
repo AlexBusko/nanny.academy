@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Row,
   Col,
@@ -6,15 +6,20 @@ import {
   FormControl,
   Button,
   Container,
+  Dropdown,
 } from "react-bootstrap";
 import { ThemeContext } from "../../../../context/ThemeContext";
 import { SuiCheckerContext } from "../../../../context/SuiCheckerContext";
 import "./style.scss";
 
-const SuiForm = ({ handleSubmit, handleNetworkChange }) => {
+const SuiForm = ({ handleSubmit }) => {
   const { theme } = useContext(ThemeContext);
-  const { ip, rpcPort, suiNetwork, setIp, setRpcPort } =
+  const { ip, rpcPort, suiNetwork, setSuiNetwork, setIp, setRpcPort } =
     useContext(SuiCheckerContext);
+
+  const handleSelect = (eventKey) => {
+    setSuiNetwork(eventKey);
+  };
 
   return (
     <Container className="sui-form-container">
@@ -60,7 +65,18 @@ const SuiForm = ({ handleSubmit, handleNetworkChange }) => {
           <Col xs={6} md={2} className="sui-form-col">
             <Form.Group className="network-form-container">
               <Form.Label>Network</Form.Label>
-              <Button
+              <Dropdown className="" onSelect={handleSelect}>
+                <Dropdown.Toggle variant="success" id="network-dropdown">
+                  {suiNetwork}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item eventKey="mainnet">mainnet</Dropdown.Item>
+                  <Dropdown.Item eventKey="testnet">testnet</Dropdown.Item>
+                  <Dropdown.Item eventKey="devnet">devnet</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              {/* <Button
                 id={theme === "light" && "light"}
                 className="btn"
                 variant="secondary"
@@ -68,7 +84,7 @@ const SuiForm = ({ handleSubmit, handleNetworkChange }) => {
                 onClick={() => handleNetworkChange("devnet")}
               >
                 {suiNetwork === "testnet" ? "TESTNET" : "DEVNET"}
-              </Button>
+              </Button> */}
             </Form.Group>
           </Col>
           <Col xs={6} md={2} className="sui-form-col">

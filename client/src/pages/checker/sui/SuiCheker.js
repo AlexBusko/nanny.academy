@@ -20,7 +20,7 @@ const SuiChecker = () => {
   const [ip, setIp] = useState("");
   const [rpcPort, setRpcPort] = useState("9000");
   // const [metricsPort, setMetricsPort] = useState("");
-  const [suiNetwork, setSuiNetwork] = useState("testnet");
+  const [suiNetwork, setSuiNetwork] = useState("mainnet");
 
   const [submitted, setSubmitted] = useState(false);
   const [headTransactions, getHeadTransactions] = useState();
@@ -35,13 +35,13 @@ const SuiChecker = () => {
     setSubmitted(!submitted);
   };
 
-  const handleNetworkChange = () => {
-    if (suiNetwork === "devnet") {
-      setSuiNetwork("testnet");
-    } else if (suiNetwork === "testnet") {
-      setSuiNetwork("devnet");
-    }
-  };
+  // const handleNetworkChange = () => {
+  //   if (suiNetwork === "mainnet") {
+  //     setSuiNetwork("testnet");
+  //   } else if (suiNetwork === "testnet") {
+  //     setSuiNetwork("mainnet");
+  //   }
+  // };
 
   useEffect(() => {
     if (submitted) {
@@ -91,10 +91,7 @@ const SuiChecker = () => {
       <div className="">
         <div className="">
           <Container>
-            <SuiForm
-              handleSubmit={handleSubmit}
-              handleNetworkChange={handleNetworkChange}
-            />
+            <SuiForm handleSubmit={handleSubmit} />
           </Container>
           <Container className="cards-container">
             <Row>
