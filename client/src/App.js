@@ -4,7 +4,7 @@ import Landing from "./pages/landing/Landing";
 import Courses from "./pages/courses/Courses";
 import Events from "./pages/events/Events";
 import Checker from "./pages/checker/Checker";
-import SuiChecker from "./pages/checker/sui/SuiCheker";
+//import SuiChecker from "./pages/checker/sui/SuiCheker";
 import { Routes, Route, useLocation } from "react-router-dom";
 // import FirstEvent from "./pages/events/FirstEvent/FirstEvent";
 // import { TradingCourse } from "./pages/courses/tradingCourse/TradingCourse";
@@ -21,13 +21,13 @@ const App = () => {
   return (
     <Routes>
       <Route element={<AcademyTemplate />}>
-        <Route path="/" element={<Landing />} />
+        <Route path="/landing" element={<Landing />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/events" element={<Events />} />
       </Route>
       <Route element={<CheckerTemplate />}>
-        <Route path="/checker" element={<Checker />}></Route>
-        <Route path="/checker/sui" element={<SuiChecker />}></Route>
+        <Route path="/" element={<Checker />}></Route>
+        {/* <Route path="/checker/sui" element={<SuiChecker />}></Route> */}
       </Route>
       {/*  */}
       {/* 
